@@ -41,7 +41,7 @@
 1. Clone the repository:
 
 ```
-git clone https://github.com/astronaum/AvitoClone
+git clone https://github.com/astronaum/AvitoClone.git
 ```
 
 2. Install Ruby on Rails and PostgreSQL.
