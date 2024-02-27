@@ -1,0 +1,104 @@
+<%= stylesheet_link_tag 'settings', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container" style="{background-color: #e8f0f7;}">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    </div>
+  </div>
+</div>
+<body>
+<div id="__next">
+  <div class="sc-h7akbr-0 ekBAOb">
+    <main class="sc-h7akbr-1 jGCuEo">
+      <div class="sc-1gfa0w0-0 eEIzaP">
+        <div class="sc-6v1bfm-0 cTgQmW">
+          <div class="sc-1baqrvp-0 ffpWTv">
+            <div class="sc-1lz4h6h-0 buiWfX">
+              <div class="">
+                <a  rel="noopener noreferrer" class="">
+                  <div class="sc-8psn2y-1 fFbqVu">
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="sc-1lz4h6h-0 bvSZRj">
+              <%= form_with(model: current_utilisateur, local: true) do |form| %>
+                <div class="sc-1t6bwmy-0 gswIJF">
+                  <label class="sc-1t6bwmy-1 bTPdgy">
+                    <span>*</span>
+                    Nom
+                  </label>
+                  <div tabindex="-1" class="sc-1i9i8oo-2 fnFWbk">
+                    <%= form.text_field :nom, class: 'form-control sc-1i9i8oo-0 fZOLaY' %>
+                    <div class="sc-1i9i8oo-3 fauTXP">
+                      <div class="sc-1i9i8oo-4 jNDCeZ">
+                        <div style="width:32px;height:32px;background-color:rgba(242, 242, 242,0.2);border-radius:50px" class="sc-1i9i8oo-1 kUSyVN"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-1t6bwmy-0 gswIJF">
+                  <label class="sc-1t6bwmy-1 bTPdgy">
+                    <span>*</span>
+                    Téléphone
+                  </label>
+                  <div tabindex="-1" class="sc-1i9i8oo-2 fnFWbk">
+                    <%= form.telephone_field :telephone, class: 'form-control sc-1i9i8oo-0 fZOLaY' %>
+                    <div class="sc-1i9i8oo-3 fauTXP">
+                      <div class="sc-1i9i8oo-4 jNDCeZ">
+                        <div style="width:32px;height:32px;background-color:rgba(242, 242, 242,0.2);border-radius:50px" class="sc-1i9i8oo-1 kUSyVN"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-1t6bwmy-0 gswIJF">
+                  <label class="sc-1t6bwmy-1 bTPdgy">
+                    <span>*</span>
+                    E-mail
+                  </label>
+                  <div tabindex="-1" class="sc-1i9i8oo-2 VoSSq">
+                    <%= form.text_field :email, class: 'form-control sc-1i9i8oo-0 kElQU', disabled: true %>
+                    <div class="sc-1i9i8oo-3 fauTXP"></div>
+                  </div>
+                </div>
+                <p class="sc-1x0vz2r-0 fZbsnR">
+                  Pour des raisons de confidentialité, l’adresse mail ne peut pas être modifiée, pour plus d’information veuillez contacter notre service client au Tél: 0520-42-86-86 / <a class="sc-1cf7u6r-0 kfrvnK sc-6v1bfm-9 jcAUeb" >Live chat ICI</a>
+                </p>
+                <div class="sc-1t6bwmy-0 gswIJF">
+                  <label class="sc-1t6bwmy-1 bTPdgy">
+                    <span>*</span>
+                    Nouveau mot de passe
+                  </label>
+                  <div tabindex="-1" class="sc-1i9i8oo-2 fnFWbk">
+                    <div class="sc-1i9i8oo-3 eAIOkm"></div>
+                    <%= form.password_field :password, class: 'form-control sc-1i9i8oo-0 inZaZn' %>
+                  </div>
+                </div>
+                <div class="sc-1t6bwmy-0 gswIJF">
+                  <label class="sc-1t6bwmy-1 bTPdgy">
+                    <span>*</span>
+                    Confirmer le mot de passe
+                  </label>
+                  <div tabindex="-1" class="sc-1i9i8oo-2 fnFWbk">
+                    <div class="sc-1i9i8oo-3 eAIOkm"></div>
+                    <%= form.password_field :password_confirmation, class: 'form-control sc-1i9i8oo-0 inZaZn' %>
+                    <div class="sc-1i9i8oo-3 fauTXP">
+                      <div class="sc-1i9i8oo-4 jNDCeZ">
+                        <div style="width:32px;height:32px;background-color:rgba(242, 242, 242,0.2);border-radius:50px" class="sc-1i9i8oo-1 kUSyVN"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sc-6v1bfm-7 hfbJDI">
+                  <button type="button" class="sc-uoqswv-0 sc-uoqswv-1 sc-uoqswv-4 divstyl1 igwMZx"><%= link_to "Annuler", root_path, class: "no-deco" %></button>
+                  <%= form.submit 'Sauvegarder', class: 'btn btn-primary mysignupbutton sc-uoqswv-0 sc-uoqswv-1 sc-uoqswv-2 divstyl1 dBNPnL' %>
+                <% end %>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+</body>

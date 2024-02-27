@@ -1,0 +1,76 @@
+<style>
+    .card-container {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .card {
+        display: inline-block;
+        width: 400px;
+        margin-right: 10px;
+    }
+
+    .carousel-item img {
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="card-container">
+  <% if Annonce.all.where(categorie: 'ENT').present? %>
+    <% Annonce.where(categorie: 'ENT').each do |annonce| %>
+      <div class="card">
+        <div id="carouselExampleIndicators-<%= annonce.id %>" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% annonce.images.each_with_index do |image, index| %>
+              <li data-target="#carouselExampleIndicators-<%= annonce.id %>" data-slide-to="<%= index %>" <%= "class='active'" if index.zero? %>></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <% if annonce.images.empty? %>
+              <div class="carousel-item active">
+                <%= image_tag "default_image.jpg", width: "100%", height: "auto" %>
+              </div>
+            <% else %>
+              <% annonce.images.each_with_index do |image, index| %>
+                <div class="carousel-item <%= "active" if index.zero? %>">
+                  <%= image_tag image, width: "100%", height: "auto" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators-<%= annonce.id %>" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators-<%= annonce.id %>" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="title">
+          <%= annonce.titre %>
+        </div>
+        <div class="price">
+          <p><%= annonce.prix %> DH</p>
+        </div>
+        <div class="title">
+          <%= link_to "Voir l'annonce", annonce_path(annonce), class: "card-link" %>
+        </div>
+        <div class="title">
+          <% if session[:utilisateur_id].present? %>
+            <%= link_to "Ajouter aux favoris", favoris_path(annonce_id: annonce.id), method: :post %>
+          <% else %>
+            <%= link_to "Ajouter aux favoris", login_path, method: :post %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="card annoncement">
+      <p>
+        No content available
+      </p>
+    </div>
+  <% end %>
+</div>

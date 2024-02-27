@@ -1,0 +1,78 @@
+<div class="container" style="{background-color: #e8f0f7;}">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+    </div>
+  </div>
+</div>
+<div class="MarginCards">
+  <div class="row">
+    <div class="col-sm-8 LittelMarginCards">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Qu'annoncez-vous aujourd'hui ?</h4>
+          <h6>Grâce à ces informations les acheteurs peuvent trouver votre annonce plus facilement</h6>
+          <%= form_with model: @annonce do |f| %>
+            <div class="form-group">
+              <%= f.label :Catégorie %>
+              <%= f.select :categorie, options_for_select(categories_options), {}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Ville %>
+              <%= f.select :ville, options_for_select(moroccan_cities_options), {}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Téléphone %>
+              <% utilisateur = Utilisateur.find_by(id: session[:utilisateur_id]) %>
+              <% if utilisateur %>
+                <%= f.text_field :telephone, class: "form-control", value: utilisateur.telephone, disabled: true%>
+              <% end %>
+            </div>
+            <div class="form-group">
+              <%= f.label :"Titre de l'annonce" %>
+              <%= f.text_field :titre, class: "form-control "%>
+            </div>
+            <div class="form-group">
+              <%= f.label :Etat %>
+              <%= f.select :etat, options_for_select([["Neuf", "Neuf"], ["Occasion", "Occasion"]]), {}, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Prix %>
+              <%= f.number_field :prix, class: "form-control", step: "0.01", min: "0", max: "1000000" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :Description %>
+              <%= f.text_area :description, class: "form-control "%>
+            </div>
+            <div class="form-group">
+              <%= f.label :Image %>
+              <%= f.file_field :image, class: 'form-control',  multiple: true %>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 LittelMarginCards">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-0 text-center"><%= image_tag "lightbulb.png", alt: "logo", width: "17", height: "17" %> Comment définir mon annonce</h5>
+          <div class="card LittelMarginCardsB">
+            <p>Choisir la bonne catégorie lors de l'insertion d'une annonce peut aider à augmenter la visibilité, la pertinence et l'efficacité, et éviter tout potentiel refus.</p>
+            <p>Il est important d'inclure une adresse postale claire et précise pour que les clients potentiels puissent facilement vous trouver.</p>
+            <p>Assurez-vous d'inclure un numéro de téléphone auquel les clients potentiels peuvent vous joindre</p>
+            <p>Gardez vos coordonnées à jour.</p>
+          </div>
+          <div class="text-center">
+            <a>Termes et conditions d’annonce</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="position-relative fixedBottom">
+  <footer class="footer bg-light w-100 py-3 position-absolute bottom-0 start-50 translate-middle-x itemPosition">
+    <div class="container">
+          <%= f.submit "Create", class: "btn btn-primary BoxBorder" %>
+          <% end %>
+    </div>
+  </footer>
+</div>

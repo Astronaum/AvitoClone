@@ -1,0 +1,77 @@
+<header class="header align-item">
+  <div class="top-bar">
+    <div class="top-bar__content txt-deco">
+      <section class="phone">
+        <%= link_to "AvitoClone", root_path, class: "nav-link" %>
+      </section>
+      <section class="phone">
+        <%= link_to "AutoNeuf", autoneuf_path, class: "nav-link" %>
+      </section>
+      <section class="phone">
+        <%= link_to "ImmoNeuf", immoneuf_path, class: "nav-link" %>
+      </section>
+      <section class="phone">
+        <%= link_to "Simulateur crédit", simulateur_path, class: "nav-link" %>
+      </section>
+      <section class="phone">
+        <%= link_to "Boutique", boutique_path, class: "nav-link" %>
+      </section>
+      <section class="phone">
+        <%= link_to "Magazine", magazine_path, class: "nav-link" %>
+      </section>
+      <section class="d-block">
+        <%= link_to "Aide et renseignements", aide_path, class: "nav-link" %>
+      </section>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar__content">
+      <div  style="display: flex; justify-content: flex-start;">
+        <%= link_to(image_tag("cart.svg", alt: "logo", width: "30", height: "40"), root_path) %>
+      </div>
+      <nav class="nav">
+        <ul class="nav__list">
+          <% if session[:utilisateur_id].present? %>
+            <li class="nav__item dropdown">
+              <a class=" dropdown-toggle btn btn-light dropdownB" href="#" id="btn_invisible" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= Utilisateur.find(session[:utilisateur_id]).nom %>
+              </a>
+              <div class="dropdown-menu center" aria-labelledby="navbarDropdown">
+                <ul>
+                  <li class="nav__item "><%= link_to "Mes annonces", mesannonces_path, class: "dropdown-item no-deco" %></li>
+                  <li class="nav__item "><%= link_to "Mes favoris", mesfavoris_path, class: "dropdown-item no-deco" %></li>
+                  <li class="nav__item "><%= link_to "Réglages", edit_path, class: "dropdown-item no-deco" %></li>
+                  <li class="nav__item "><hr></li>
+                  <li class="nav__item"><%= link_to "Se déconnecter", logout_path, class: "dropdown-item no-deco" %></li>
+                </ul>
+            </div>
+            </li>
+          <% else %>
+            <li class="nav__item">
+              <%= link_to "Se connecter",login_path, class: "btn btn-light dropdownB" , id: "btn_invisible" %>
+            </li>
+          <% end %>
+          <% if current_page?(new_annonce_path) %>
+            <li class="nav__item">
+              <%= link_to "Quitter",root_path, class: "btn btn-light dropdownB" , id: "btn_invisible" %>
+            </li>
+          <% elsif session[:utilisateur_id].present? %>
+            <li class="nav__item">
+              <%= link_to " + Déposer une annonce", new_annonce_path , class: "btn btn-success" %>
+            </li>
+          <% else %>
+            <li class="nav__item">
+              <%= link_to " + Déposer une annonce", login_path, class: "btn btn-success" %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </div>
+  </header>
